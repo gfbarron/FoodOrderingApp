@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "food-app",
-    "slug": "food-app",
+    "slug": "food-ordering-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5e2f61d2-46b1-4d55-a13c-afbf1d35a2a3"
+      }
+    },
+    "owner": "gfbarron",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5e2f61d2-46b1-4d55-a13c-afbf1d35a2a3"
     }
   }
 }
