@@ -12,9 +12,13 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
+
+// icons
+import { FontAwesome } from "@expo/vector-icons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 // Store data in json files (can also be retrieved from other sources)
 import restaurantData from "./assets/restaurantData.json";
@@ -339,9 +343,31 @@ export default function App() {
   // main tab navigation container
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            if (route.name === "Restaurants") {
+              return (
+                <MaterialIcons name="fastfood" size={size} color={color} />
+              );
+            } else if (route.name === "Favourites") {
+              return (
+                <FontAwesome5 name="grin-hearts" size={size} color={color} />
+              );
+            }
+          },
+          tabBarActiveTintColor: "red",
+          tabBarInactiveTintColor: "gray",
+          tabBarLabelStyle: {
+            marginTop: "2%"
+          },
+          tabBarIconStyle: {
+            marginTop: "2%"
+          }
+        })}
+      >
         <Tab.Screen
-          name="RestaurantsTab"
+          name="Restaurants"
           children={() => <RestaurantScreenNavigator favouritesOnly={false} />}
           options={{ headerShown: false }}
         />
