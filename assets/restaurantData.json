@@ -10,17 +10,47 @@
       {
         "title": "Gelato",
         "contents": [
-          { "title": "Vanilla" },
-          { "title": "Chocolate" },
-          { "title": "Mint" }
+          {
+            "title": "Vanilla",
+            "price": "$1.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "vanilla.jpg"
+          },
+          {
+            "title": "Chocolate",
+            "price": "$2.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "chocolate.jpg"
+          },
+          {
+            "title": "Mint",
+            "price": "$0.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "mint.jpg"
+          }
         ]
       },
       {
         "title": "Coffee",
         "contents": [
-          { "title": "Flat white" },
-          { "title": "Latte" },
-          { "title": "Caffe Americano" }
+          {
+            "title": "Flat white",
+            "price": "$4.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "flat-white.jpg"
+          },
+          {
+            "title": "Caffe Americano",
+            "price": "$2.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "americano.jpg"
+          },
+          {
+            "title": "Latte",
+            "price": "$1.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "latte.jpg"
+          }
         ]
       }
     ]
@@ -36,17 +66,47 @@
       {
         "title": "Dinner",
         "contents": [
-          { "title": "Butcher's Block" },
-          { "title": "Roast Chicken" },
-          { "title": "Stuffed Butternut Squash" }
+          {
+            "title": "Butcher's Block",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "Roast Chicken",
+            "price": "$25.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "Stuffed Butternut Squash",
+            "price": "$15.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          }
         ]
       },
       {
         "title": "Martini's",
         "contents": [
-          { "title": "Left Hook" },
-          { "title": "Money Maker" },
-          { "title": "Bourbon Time" }
+          {
+            "title": "Left Hook",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "martini.jpg"
+          },
+          {
+            "title": "Money Maker",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "martini.jpg"
+          },
+          {
+            "title": "Bourbon Time",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "martini.jpg"
+          }
         ]
       }
     ]
@@ -62,19 +122,106 @@
       {
         "title": "Mangiamo",
         "contents": [
-          { "title": "Red Pepper Penne" },
-          { "title": "Spaghetti Bolognese" },
-          { "title": "White Truffle Risotto" }
+          {
+            "title": "Red Pepper Penne",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "Spaghetti Bolognese",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "White Truffle Risotto",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          }
         ]
       },
       {
         "title": "Vino Rosso",
         "contents": [
-          { "title": "Barolo & Barbaresco" },
-          { "title": "Amarone" },
-          { "title": "Rosso di Montalcino" }
+          {
+            "title": "Barolo & Barbaresco",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "wine.jpg"
+          },
+          {
+            "title": "Amarone",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "wine.jpg"
+          },
+          {
+            "title": "Rosso di Montalcino",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "wine.jpg"
+          }
         ]
       }
     ]
-  }
+  },
+  {
+    "id": 4,
+    "title": "Karl Strauss",
+    "tagline": "A brewing company, $",
+    "eta": "20",
+    "imgUri": "strauss.jpg",
+    "height": 240,
+    "items": [
+      {
+        "title": "Dinner",
+        "contents": [
+          {
+            "title": "Pub Style Chicken",
+            "price": "$20.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "Smoked Brisket",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          },
+          {
+            "title": "Atlantic Salmon",
+            "price": "$40.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "dinner-item.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Beers (On Tap)",
+        "contents": [
+          {
+            "title": "Red Trolley Ale",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "beer.jpg"
+          },
+          {
+            "title": "Golden Stout",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "beer.jpg"
+          },
+          {
+            "title": "Dark Hazelnut Stout",
+            "price": "$10.99",
+            "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+            "imgUri": "beer.jpg"
+          }
+        ]
+      }
+    ]
+  },
+
 ]

@@ -9,15 +9,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 
 // Store data in json files (can also be retrieved from other sources)
-import restaurantData from './assets/restaurantData.json';
+import restaurantData from "./assets/restaurantData.json";
 
 // get screen dimensions for responsive elements
 const HEIGHT = Dimensions.get("window").height;
@@ -30,11 +30,24 @@ const Tab = createBottomTabNavigator();
 /**
  * This is needed because we need to use static images for the project instead
  * of fetching from the network dynamically.
+ *
+ * Images are re-used across restaurants to save space for this project.
  */
 const imageMap = {
   "ice-cream-header.jpg": require("./assets/images/ice-cream-header.jpg"),
   "indulge-in-a-spectacular.jpg": require("./assets/images/indulge-in-a-spectacular.jpg"),
   "martini-house.jpg": require("./assets/images/martini-house.jpg"),
+  "vanilla.jpg": require("./assets/images/vanilla.jpg"),
+  "mint.jpg": require("./assets/images/mint.jpg"),
+  "chocolate.jpg": require("./assets/images/chocolate.jpg"),
+  "flat-white.jpg": require("./assets/images/flat-white.jpg"),
+  "americano.jpg": require("./assets/images/americano.jpg"),
+  "latte.jpg": require("./assets/images/latte.jpg"),
+  "dinner-item.jpg": require("./assets/images/dinner-item.jpg"),
+  "martini.jpg": require("./assets/images/martini.jpg"),
+  "wine.jpg": require("./assets/images/wine.jpg"),
+  "strauss.jpg": require("./assets/images/strauss.jpg"),
+  "beer.jpg": require("./assets/images/beer.jpg"),
 };
 
 /**
@@ -129,11 +142,25 @@ export default function App() {
             />
           </TouchableOpacity>
           <View style={styles.etaBadge}>
-            <Text style={styles.etaText}>{props.eta}</Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit style={styles.etaText}>
+              {props.eta}
+            </Text>
             <Text style={styles.etaText}>mins</Text>
           </View>
-          <Text style={styles.restaurantTitleText}>{props.title}</Text>
-          <Text style={styles.restaurantSubtitleText}>{props.tagline}</Text>
+          <Text
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            style={styles.restaurantTitleText}
+          >
+            {props.title}
+          </Text>
+          <Text
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            style={styles.restaurantSubtitleText}
+          >
+            {props.tagline}
+          </Text>
         </View>
       }
       onPress={props.action}
@@ -171,7 +198,6 @@ export default function App() {
    * Restaurant screen showing list of restaurants
    */
   function RestaurantScreen({ navigation, route }) {
-
     const [dataToShow, setDataToShow] = useState(restaurantData);
     useEffect(() => {
       const filteredData = route.params.favouritesOnly
@@ -214,6 +240,65 @@ export default function App() {
     );
   }
 
+  /**
+   * Represents single item in the Menu screen.
+   */
+  const MenuItem = ({ children }) => (
+    <Cell
+      contentContainerStyle={{
+        height: HEIGHT / 6, // fixed height for cell
+        paddingLeft: 0, // remove default padding
+        paddingRight: 0,
+        flex: 1, // fill space
+        borderBottomWidth: "1",
+        borderBottomColor: "#ccc",
+        borderBottomLeftRadius: "20%",
+        borderBottomRightRadius: "20%",
+        marginBottom: "2%",
+        paddingBottom: "5%",
+      }}
+      cellContentView={
+        <View
+          style={{
+            flex: 1, // fill space
+            padding: 0, // remove default padding
+            margin: 0,
+            flexDirection: "row", // split vertically
+          }}
+        >
+          <View style={styles.menuItemTextContainer}>
+            <Text
+              style={styles.menuItemTitleText}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+            >
+              {children.title}
+            </Text>
+            <Text
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              style={styles.menuItemPriceText}
+            >
+              {children.price}
+            </Text>
+            <Text
+              numberOfLines={2}
+              adjustsFontSizeToFit
+              style={styles.menuItemDescriptionText}
+            >
+              {children.description}
+            </Text>
+          </View>
+          <View style={{ flex: 1, alignItems: "flex-end" }}>
+            <Image
+              source={imageMap[children.imgUri]}
+              style={styles.menuItemImg}
+            />
+          </View>
+        </View>
+      }
+    ></Cell>
+  );
 
   /**
    * Menu items screen for each restaurant
@@ -223,20 +308,24 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <View style={styles.mainContentView}>
           <ScrollView>
-            <TableView>
+            <TableView style={styles.menuTableStyle}>
               {/* create header for each menu section */}
               {route.params.map((section, i) => (
                 <Section
                   header={section.title}
+                  key={i}
                   hideSeparator="true"
                   separatorTintColor="#ccc"
-                  key={i}
+                  roundedCorners="true"
+                  headerTextStyle={{
+                    fontSize: HEIGHT / 30,
+                    textAlign: "center",
+                    paddingBottom: "3%"
+                  }}
                 >
                   {/* list items in each section */}
                   {section.contents.map((item, i) => (
-                    <Cell key={i}>
-                      <Text key={i}>{item.title}</Text>
-                    </Cell>
+                    <MenuItem key={i}>{item}</MenuItem>
                   ))}
                 </Section>
               ))}
@@ -310,6 +399,45 @@ const styles = StyleSheet.create({
     position: "absolute",
     alignSelf: "flex-end",
     paddingRight: "4%",
-    paddingTop: "4%"
+    paddingTop: "4%",
   },
+  menuItemLayout: {
+    justifyContent: "flex-start",
+    alignContent: "center",
+    width: "100%",
+    height: HEIGHT / 6,
+  },
+  menuItemImg: {
+    height: "100%",
+    width: "70%",
+    borderRadius: "50%",
+    padding: "3%"
+  },
+  menuItemTextContainer: {
+    flex: 1,
+    height: "100%",
+    paddingLeft: "2%",
+    flexDirection: "column",
+  },
+  menuItemTitleText: {
+    fontSize: HEIGHT / 30,
+    flex: 1,
+    textAlign: "left",
+    textAlignVertical: "bottom",
+    paddingTop: "3%",
+  },
+  menuItemPriceText: {
+    fontSize: HEIGHT / 40,
+    fontStyle: "italic",
+    fontWeight: "300",
+    flex: 1,
+    paddingTop: 0,
+    marginTop: 0,
+  },
+  menuItemDescriptionText: {
+    fontStyle: "italic",
+    flex: 1,
+    color: "#919090",
+  },
+  menuTableStyle: { paddingLeft: "3%", paddingRight: "3%" },
 });
