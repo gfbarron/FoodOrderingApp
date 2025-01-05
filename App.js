@@ -7,6 +7,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  PixelRatio,
 } from "react-native";
 import { Cell, Section, TableView } from "react-native-tableview-simple";
 import { NavigationContainer } from "@react-navigation/native";
@@ -26,7 +27,6 @@ import restaurantData from "./assets/restaurantData.json";
 // get screen dimensions for responsive elements
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
-
 // Navigators.
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -119,16 +119,17 @@ export default function App() {
     <Cell
       {...props}
       contentContainerStyle={{
-        height: props.height,
+        height: HEIGHT/4,
         backgroundColor: "transparent",
         paddingTop: 10,
         paddingBottom: 10,
         marginTop: 10,
         marginBottom: 25,
+        flex: 1
       }}
       highlightUnderlayColor="#ccc"
       cellContentView={
-        <View style={{ width: "100%" }}>
+        <View style={{ width: "100%", flex: 1}}>
           <Image
             style={styles.restaurantImage}
             source={imageMap[props.imgUri]}
@@ -391,15 +392,15 @@ const styles = StyleSheet.create({
   },
   etaBadge: {
     backgroundColor: "white",
-    height: HEIGHT / 12,
-    width: WIDTH / 3.5,
+    height: "30%",
+    width: "30%",
     borderRadius: WIDTH / 3 / 2,
     justifyContent: "center",
-    position: "absolute",
-    top: "65%",
-    right: "5%",
     borderWidth: "1",
     borderColor: "#ccc",
+    position: "absolute",
+    alignSelf: "flex-end",
+    bottom: "15%",
   },
   etaText: {
     color: "black",
@@ -413,13 +414,14 @@ const styles = StyleSheet.create({
     height: "80%",
   },
   restaurantTitleText: {
-    paddingTop: 15,
+    paddingTop: "10",
     fontSize: HEIGHT / 38,
     fontWeight: "bold",
   },
   restaurantSubtitleText: {
-    paddingTop: 15,
+    paddingTop: "5",
     fontSize: HEIGHT / 60,
+    fontStyle: "italic",
   },
   favButton: {
     position: "absolute",
@@ -427,17 +429,11 @@ const styles = StyleSheet.create({
     paddingRight: "4%",
     paddingTop: "4%",
   },
-  menuItemLayout: {
-    justifyContent: "flex-start",
-    alignContent: "center",
-    width: "100%",
-    height: HEIGHT / 6,
-  },
   menuItemImg: {
     height: "100%",
     width: "70%",
     borderRadius: "50%",
-    padding: "3%"
+    padding: "3%",
   },
   menuItemTextContainer: {
     flex: 1,
